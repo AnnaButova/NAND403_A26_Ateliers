@@ -1,0 +1,17 @@
+[
+    {
+        "name" : "Whiskey",
+        "price" : "10.00",
+        "type" : "alcohol"
+    },
+    {
+        "cute name" : "Vodka",
+        "nice price" : "9.00",
+        "cool type" : "alcohol"
+    },
+    {
+        "name sheesh" : "Water",
+        "price dude" : "100.00",
+        "type yolo" : "alcohol-free"
+    }
+]
