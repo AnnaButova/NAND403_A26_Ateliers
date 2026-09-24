@@ -19,7 +19,7 @@ else:
     print("LOL NOPE")
 # ------------------------------------------
 
-# Open json file as an array ---------------
+# Open json file ---------------
 with open("data_small.json", "r", -1, "utf-8") as json_file_small:
     data_json_small = json.load(json_file_small)
 # ------------------------------------------
