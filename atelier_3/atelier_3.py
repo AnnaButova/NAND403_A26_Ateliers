@@ -15,17 +15,19 @@ class MessageBoard(QWidget):
         text_edit = QTextEdit(self)
         layout.addWidget(text_edit)
         text_edit.setPlaceholderText("Type your message...")
-        user_input = text_edit.toPlainText()
 
         # Creating button
         button_ok = QPushButton("PRINT")
         layout.addWidget(button_ok)
 
         # Button pressed logic
-        def hi_message():
+        def show_user_message():
+            user_input = text_edit.toPlainText()
             print(user_input)
         
-        button_ok.pressed.connect(hi_message)
+        if button_ok.pressed.connect(show_user_message):
+            widget.show()
+            
     
    
     def on_click(self):
