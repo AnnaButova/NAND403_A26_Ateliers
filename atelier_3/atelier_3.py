@@ -5,15 +5,20 @@ class MessageBoard(QWidget):
         super().__init__() # Constructeur QWidget
         self.setWindowTitle("Message board")
         self.create_ui()
- 
+    
     def create_ui(self):
         layout = QVBoxLayout(self)
-        label = QLabel("Message board")
+        label = QLabel("Message Board")
         layout.addWidget(label)
+
+        text_edit = QTextEdit(self)
+        layout.addWidget(text_edit)
+        text_bar = QMessageBox(text_edit)
+
  
         # QTextEdit
- 
         # QPushButton
+    
    
     def on_click(self):
         print("on click called")
