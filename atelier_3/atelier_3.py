@@ -24,10 +24,19 @@ class MessageBoard(QWidget):
         def show_user_message():
             user_input = text_edit.toPlainText()
             print(user_input)
-        
-        if button_ok.pressed.connect(show_user_message):
-            widget.show()
-            
+            widget.close()
+
+            user_widget = QWidget()
+            user_widget.setWindowTitle("Your message")
+            layout_message = QVBoxLayout()
+            label_message = QLabel(user_input)
+            layout_message.addWidget(label_message)
+            user_widget.show()
+
+
+        button_ok.clicked.connect(show_user_message)
+
+
     
    
     def on_click(self):
@@ -44,7 +53,5 @@ def main():
     widget = MessageBoard()
     widget.show()
 
-    
-    
 main()
 
