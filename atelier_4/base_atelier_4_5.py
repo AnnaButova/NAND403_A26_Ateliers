@@ -29,10 +29,7 @@ class RandomGenerator(QWidget):
         table_layout.addRow(QLabel("Number of Objects"), row1)
 
         # Create min and max indicators
-        rowX = QHBoxLayout()
-        rowX.addWidget(QLabel(" Min                                       "))
-        rowX.addWidget(QLabel("Max"))
-        table_layout.addRow(QLabel(""), rowX)
+        table_layout.addRow(QLabel(""), QLabel(" Min                                       Max"))
 
         # Create box for Position X
         row2 = QHBoxLayout()
