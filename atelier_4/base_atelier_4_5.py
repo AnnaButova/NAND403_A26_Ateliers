@@ -3,10 +3,7 @@ from maya import cmds
 from PySide6.QtWidgets import (
     QWidget,
     QPushButton,
-    QVBoxLayout,
     QHBoxLayout,
-    QSpinBox,
-    QDoubleSpinBox,
     QLabel,
     QLineEdit,
     QFormLayout
