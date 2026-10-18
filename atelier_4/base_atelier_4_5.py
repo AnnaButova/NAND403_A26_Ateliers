@@ -7,7 +7,9 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QSpinBox,
     QDoubleSpinBox,
-    QLabel
+    QLabel,
+    QLineEdit,
+    QFormLayout
 )
 
 class RandomGenerator(QWidget):
@@ -19,57 +21,49 @@ class RandomGenerator(QWidget):
         self.build_ui()
     
     def build_ui(self):
-        layout_V = QVBoxLayout(self) # vertical layout
+        table_layout = QFormLayout(self) # form layout
+        
 
-       
         # Create box for number of objects
         row1 = QHBoxLayout()
-        row1.addWidget(QLabel("Number of Objects"))
-        self.nb_objects_field = QSpinBox()
-        row1.addWidget(self.nb_objects_field)
-        layout_V.addLayout(row1)
+        row1.addWidget(QLineEdit(""))
+        table_layout.addRow(QLabel("Number of Objects"), row1)
+
+        # Create min and max indicators
+        rowX = QHBoxLayout()
+        rowX.addWidget(QLabel("Min                                        "))
+        rowX.addWidget(QLabel("Max"))
+        table_layout.addRow(QLabel(""), rowX)
 
         # Create box for Position X
         row2 = QHBoxLayout()
-        row2.addWidget(QLabel("Position X"))
-        self.position_x_field_min = QDoubleSpinBox()
-        self.position_x_field_max = QDoubleSpinBox()
-        row2.addWidget(self.position_x_field_min)
-        row2.addWidget(self.position_x_field_max)
-        layout_V.addLayout(row2)
+        row2.addWidget(QLineEdit(""))
+        row2.addWidget(QLineEdit(""))
+        table_layout.addRow(QLabel("Position X"), row2)
 
         # Create box for Position Y
         row3 = QHBoxLayout()
-        row3.addWidget(QLabel("Position Y"))
-        self.position_y_field_min = QDoubleSpinBox()
-        self.position_y_field_max = QDoubleSpinBox()
-        row3.addWidget(self.position_y_field_min)
-        row3.addWidget(self.position_y_field_max)
-        layout_V.addLayout(row3)
+        row3.addWidget(QLineEdit(""))
+        row3.addWidget(QLineEdit(""))
+        table_layout.addRow(QLabel("Position Y"), row3)
 
         # Create box for Position Z
         row4 = QHBoxLayout()
-        row4.addWidget(QLabel("Position Z"))
-        self.position_z_field_min = QDoubleSpinBox()
-        self.position_z_field_max = QDoubleSpinBox()
-        row4.addWidget(self.position_z_field_min)
-        row4.addWidget(self.position_z_field_max)
-        layout_V.addLayout(row4)
-        layout_V.addLayout(row2)
-
+        row4.addWidget(QLineEdit(""))
+        row4.addWidget(QLineEdit(""))
+        table_layout.addRow(QLabel("Position Z"), row4)
+     
         # Create box for Scale
         row5 = QHBoxLayout()
-        row5.addWidget(QLabel("Scale"))
-        self.scale_field_min = QDoubleSpinBox()
-        self.scale_field_max = QDoubleSpinBox()
-        row5.addWidget(self.scale_field_min)
-        row5.addWidget(self.scale_field_max)
-        layout_V.addLayout(row5)
+        row5.addWidget(QLineEdit(""))
+        row5.addWidget(QLineEdit(""))
+        table_layout.addRow(QLabel("Scale"), row5)
 
         # Create Button
         self.create_button = QPushButton("Create")
         self.create_button.clicked.connect(self.create_object)
-        layout_V.addWidget(self.create_button)
+        table_layout.addRow(self.create_button)
+        
         
 
     def create_object(self):
