@@ -17,7 +17,8 @@ class RandomGenerator(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Atelier 4-5")
-        self.setMinimumWidth(400)
+        self.setFixedWidth(400)
+        self.setFixedHeight(210)
         self.build_ui()
     
     def build_ui(self):
@@ -26,37 +27,46 @@ class RandomGenerator(QWidget):
 
         # Create box for number of objects
         row1 = QHBoxLayout()
-        row1.addWidget(QLineEdit(""))
+        self.number_of_objects_input = QLineEdit("1")
+        row1.addWidget(self.number_of_objects_input)
         table_layout.addRow(QLabel("Number of Objects"), row1)
 
         # Create min and max indicators
         rowX = QHBoxLayout()
-        rowX.addWidget(QLabel("Min                                        "))
+        rowX.addWidget(QLabel(" Min                                       "))
         rowX.addWidget(QLabel("Max"))
         table_layout.addRow(QLabel(""), rowX)
 
         # Create box for Position X
         row2 = QHBoxLayout()
-        row2.addWidget(QLineEdit(""))
-        row2.addWidget(QLineEdit(""))
+        self.position_x_min_input = QLineEdit("0")
+        self.position_x_max_input = QLineEdit("0")
+        row2.addWidget(self.position_x_min_input)
+        row2.addWidget(self.position_x_max_input)
         table_layout.addRow(QLabel("Position X"), row2)
 
         # Create box for Position Y
         row3 = QHBoxLayout()
-        row3.addWidget(QLineEdit(""))
-        row3.addWidget(QLineEdit(""))
+        self.position_y_min_input = QLineEdit("0")
+        self.position_y_max_input = QLineEdit("0")
+        row3.addWidget(self.position_y_min_input)
+        row3.addWidget(self.position_y_max_input)
         table_layout.addRow(QLabel("Position Y"), row3)
 
         # Create box for Position Z
         row4 = QHBoxLayout()
-        row4.addWidget(QLineEdit(""))
-        row4.addWidget(QLineEdit(""))
+        self.position_z_min_input = QLineEdit("0")
+        self.position_z_max_input = QLineEdit("0")
+        row4.addWidget(self.position_z_min_input)
+        row4.addWidget(self.position_z_max_input)
         table_layout.addRow(QLabel("Position Z"), row4)
      
         # Create box for Scale
         row5 = QHBoxLayout()
-        row5.addWidget(QLineEdit(""))
-        row5.addWidget(QLineEdit(""))
+        self.scale_min_input = QLineEdit("1")
+        self.scale_max_input = QLineEdit("1")
+        row5.addWidget(self.scale_min_input)
+        row5.addWidget(self.scale_max_input)
         table_layout.addRow(QLabel("Scale"), row5)
 
         # Create Button
@@ -67,17 +77,40 @@ class RandomGenerator(QWidget):
         
 
     def create_object(self):
-        forme = random.choice(["cube", "cylindre", "sphere"])
 
-        if forme == "cube":
-            objet = cmds.polyCube()[0]
-        elif forme == "cylindre":
-            objet = cmds.polyCylinder()[0]
-        else:
-            objet = cmds.polySphere()[0]
+        number_of_objects = int(self.number_of_objects_input.text()) # user input for number of objects
 
-        random_value = random.uniform(-10, 10)
-        cmds.move(random_value, random_value, random_value, objet)
+        for i in range(number_of_objects):
+
+            forme = random.choice(["cube", "cylindre", "sphere"]) # an array of forms that will spawn
+            if forme == "cube":
+                objet = cmds.polyCube()[0]
+            elif forme == "cylindre":
+                objet = cmds.polyCylinder()[0]
+            else:
+                objet = cmds.polySphere()[0]
+
+            # creating variables for min and max values based on user input
+            x_min = float(self.position_x_min_input.text())
+            x_max = float(self.position_x_max_input.text())
+
+            y_min = float(self.position_y_min_input.text())
+            y_max = float(self.position_y_max_input.text())
+
+            z_min = float(self.position_z_min_input.text())
+            z_max = float(self.position_z_max_input.text())
+
+            # generating random values for position and scale based on user input
+            random_x = random.uniform(x_min, x_max)
+            random_y = random.uniform(y_min, y_max)
+            random_z = random.uniform(z_min, z_max)
+
+            # generating random scale based on user input
+            random_scale = random.uniform(float(self.scale_min_input.text()), float(self.scale_max_input.text()))
+
+            # applying random values to the object
+            cmds.scale(random_scale, random_scale, random_scale, objet)
+            cmds.move(random_x, random_y, random_z, objet)
 
 
 def main():
