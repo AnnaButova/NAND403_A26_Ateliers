@@ -47,5 +47,14 @@ class MainWindow(QMainWindow):
         layout_v.addLayout(sub_layout_h2)
         layout_v.addWidget(self.generate_button)
 
+    def spawn_fence(self):
+        self.fence_v_length = 10
+        self.fence_v_width = 2
+        self.fence_v_depth = self.fence_v_width / 1.5
+
+        self.fence_h_length = self.fence_v_length
+        self.fence_h_width = self.fence_v_width
+        self.fence_h_depth = self.fence_v_depth
+
 window = MainWindow()
 window.show()
