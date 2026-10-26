@@ -6,13 +6,13 @@ from PySide6.QtWidgets import (
     QLineEdit,
     QPushButton,
     QVBoxLayout,
+    QHBoxLayout,
     QWidget,
     QLabel,
     QDoubleSpinBox
     )
 
-class MainWindow(QMainWindow)
-    class MainWindow(QMainWindow):
+class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Fence Generation")
@@ -22,9 +22,30 @@ class MainWindow(QMainWindow)
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         layout_v = QVBoxLayout(central_widget)
+        sub_layout_h1 = QHBoxLayout()
+        sub_layout_h2 = QHBoxLayout()
 
-        self.fence_number = QDoubleSpinBox("Number of fences")
-        self.spacing = QDoubleSpinBox("Spacing")
+        self.label_fence_nb = QLabel("Fence Number")
+        self.label_spacing = QLabel("Spacing")
+        self.fence_number = QDoubleSpinBox(self)
+        self.spacing = QDoubleSpinBox(self)
+
+        sub_layout_h1.addWidget(self.label_fence_nb)
+        sub_layout_h1.addWidget(self.fence_number)
+        sub_layout_h1.addWidget(self.label_spacing)
+        sub_layout_h1.addWidget(self.spacing)
+
+        self.label_height = QLabel("Fence Height")
+        self.fence_height = QDoubleSpinBox(self)
+
+        sub_layout_h2.addWidget(self.label_height)
+        sub_layout_h2.addWidget(self.fence_height)
+
+        self.generate_button = QPushButton("Generate!")
+
+        layout_v.addLayout(sub_layout_h1)
+        layout_v.addLayout(sub_layout_h2)
+        layout_v.addWidget(self.generate_button)
 
 window = MainWindow()
 window.show()
