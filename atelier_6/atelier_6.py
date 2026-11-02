@@ -40,6 +40,7 @@ class MainWindow(QMainWindow):
 
         sub_layout_h2.addWidget(self.label_height)
         sub_layout_h2.addWidget(self.fence_height)
+        
 
         self.generate_button = QPushButton("Generate!")
 
