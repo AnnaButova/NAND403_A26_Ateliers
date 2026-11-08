@@ -30,7 +30,7 @@
 
 4. Si votre shelf n’est pas sélectionné automatiquement, cliquer sur le nom de votre shelf dans la liste des shelf à gauche
 5. Dans les paramètres en bas, repérer **Icon Name** et cliquer sur l'icône du dossier
-6. À gauche dans le menu **Folder Bookmarks**, trouver votre dossier “icons” et sélectionner le fichier icone.png, cliquer sur le bouton Open
+6. À gauche dans le menu **Folder Bookmarks**, trouver votre dossier “icons” et sélectionner le fichier icone.png, cliquer sur le bouton **Open**
 7. Vous êtes de retour au menu **Shelves**, cliquer sur le bouton **Close**
 
 ***Félicitations, vous avez créé votre raccourci!***
