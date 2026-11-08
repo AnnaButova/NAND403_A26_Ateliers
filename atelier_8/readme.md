@@ -1,3 +1,4 @@
+Vérifié par Ana Carolina Rossini
 # Installation d’un script dans Maya
 
 *Dans ce document vous trouverez comment installer un script dans Maya et faire un raccourci pour l’utiliser avec facilité. Ce tutoriel comprend que l’utilisateur utilise Maya avec une interface en anglais.*
